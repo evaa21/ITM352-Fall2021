@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="products-style.css">
     <style id="localstyle"></style> 
     <script>
-        const store_name = "Eva Asiskovich";
+        //const store_name = "Eva Asiskovich";
 
     </script>
    
@@ -20,23 +20,38 @@
         <script>
             var hits = 10;
             var spins = 20;
+            var first_name = "Eva";
+            var last_name = "Asiskovich";
+            var store_name = "<p style=font-size=300%>" + "<B>" + first_name + "</b><i>" + last_name + 
+                "Better Used Smartphone products </p>";
             document.write(store_name);
         </script> 
-        Better Used Smartphone products </h1>
+         </h1>
     <p>
         Hits:<span id= "hits_span">0</span>
         Spins:<span id="spins_span">0</span>
+        Hit/Spin:<span id="hit_spin_span">0</span>
     </p>
-
-
-</header>
 
     <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
     onchange="localstyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';" 
     >
-    
+</header>
+
     <div><main>
-        <section class="item" onmouseover="className='item rotate' " onclick="className='item' ">
+        <section class="item" onmouseover="
+            className='item rotate'
+            //spins++;
+            spins += 1;
+            spins_spans.innerHTML = spins;
+            temp = hits/spins;
+            hit_spin_span.innerHTML = temp.toFixed(2);
+             " onclick="
+             hits+= 1;
+             hits_span.innerHTML = hits;
+             temp = hits/spins_;
+             hit_spin_span.innerHTML = temp.toFixed(2);
+             className='item' ">
         <h2>HTC</h2>
         <p>&dollar;40.00</p>
         <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" alt="photo"</img>
@@ -66,7 +81,20 @@
         <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg" alt="photo"</img>
         </section>
 </main></div>
+<footer>
+ <script>
+    var now = new Date();
+      document.write(`
+      <table border="1" style="margin-left: auto; margin-right: auto; text-align: center;">
+        <tr><th colspan="2"><h1>Your One Stop For Used Phones - ${first_name}.${last_name}.'s</h1></th></tr>
+        <tr><td>1.</td><td><br />Copyright @ ${first_name + ' ' + last_name}</td></tr>
+        <tr><td>2.</td><td>${now.getFullYear()}</td></tr>
+        <tr><td>3.</td><td>11:15 AM</td></tr>
+        </table>
 
-<h2>Your one-stop phone shop</h2>
+      `);
+</script>
+</footer>
 </body>
+
 </html>
