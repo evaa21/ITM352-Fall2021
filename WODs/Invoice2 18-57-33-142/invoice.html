@@ -50,13 +50,13 @@
      //Sales tax rate and sales tax amount
      var salesTax = .0575;
      var tax_amount = Sub_total*salesTax;
-
+    
      //Shipping
      if(Sub_total <=50){
        shipping = 2;
      }
-     else if (Sub_total <=100){
-       shipping = 5;
+     else if(Sub_total <= 100){
+       shipping = 5
      }
      else {
        shipping = 0.05*Sub_total
@@ -131,15 +131,14 @@
             <td width="54%">$<script>document.write(Sub_total)</script></td>
           </tr>
           <tr>
-            <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax</span></td>
+            <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @ 5.75%</span></td>
             <td width="54%">$<script>document.write(tax_amount.toFixed(2))</script></td>
           </tr>
           <tr>
-            <tr>
-              <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Shipping</span></td>
-              <td width="54%">$<script>document.write(shipping.toFixed(2))</script></td>
-            </tr>
-            <tr>
+            <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Shipping</span></td>
+            <td width="54%">$<script>document.write(shipping.toFixed(2))</script></td>
+          </tr>
+          <tr>
             <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
             <td width="54%"><strong>$<script>document.write(grand_total.toFixed(2))</script></strong></td>
           </tr>

@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eva's Upgraded Store</title>
-    <link rel="stylesheet" href="products-style.css">
-    <style>
-        body{
-            text-align: center;
-            background: hsl(315, 39%, 80%);
-        }
-    </style>
-    <script>
-     var name1 = "HTC";
+var name1 = "HTC";
      var price1 = 40.00;
      var image1 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg";
 
@@ -32,15 +17,5 @@
      var name5 = "Blackberry";
      var price5 = 10.00;
      var image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
-    </script>
- </head>
-
-<body>
-    <h1>Better Used Smartphone Store</h1>
-<a href="products_display.html">
-    <img src="images/phone_globe.jpeg" alt="Phone globe" width="300px">
-</a>
-
-
-</body>
-</html>
+     
+console.log("Product variables loaded...");
