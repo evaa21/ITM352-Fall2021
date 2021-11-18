@@ -1,0 +1,109 @@
+<script>
+    /* A receipt containing 5 jewlery store products.
+       It contains the name of the item, the quantity available, and the price.
+       The extended price is quantity multiplied by price.
+       The receipt also represents informatio such as the tax rate and the total amount*/
+    </script>
+    <!DOCTYPE html>
+    <html lang="en">
+    <script>
+        //Data structure used from Invoics
+        // Product 1
+        var item1 = 'Gillette Sensor 3 Razor';
+         var quantity1 = 2;
+         var price1 = 1.23;
+    
+         // Product 2
+         var item2 = 'Barbasol Shaving Cream';
+         var quantity2 = 1;
+         var price2 = 2.64;
+    
+         // Product 3
+         var item3 = 'Nautica Cologne';
+         var quantity3 = 1;
+         var price3 = 6.17; 
+    
+         // Product 4
+         var item4 = 'Rubbing Alcohol';
+         var quantity4 = 3;
+         var price4 = 0.98;
+    
+         // Product 5
+         var item5 = 'Colgate Classic Toothbrush';
+         var quantity5 = 12;
+         var price5 = 1.89;
+    
+         //Compute extended prices
+         var extended_price1 = quantity1*price1;
+         var extended_price2 = quantity2*price2;
+         var extended_price3 = quantity3*price3;
+         var extended_price4 = quantity4*price4;
+         var extended_price5 = quantity5*price5;
+    
+         //Subtotal for sale
+         var Sub_total = extended_price1 + extended_price2 + extended_price3 + extended_price4 + extended_price5;
+    
+    </script>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Invoice</title>
+    </head>
+    <body>
+        <table border="4">
+          <tbody>
+            <tr>
+              <th style="text-align: center;" width="20px">Item</th>
+              <th style="text-align: center;" width="20px">Items Available</th>
+              <th style="text-align: center;" width="20px">Quantity</th>
+              <th style="text-align: center;" width="20px">Price</th>
+              <th style="text-align: center;" width="20px">Extended Price</th>
+            </tr>
+      
+              <tr>
+                  <td colspan="4" width="100%">&nbsp;</td>
+              </tr>
+      
+            
+              <tr>
+                  <td style="text-align: center;" colspan="3" width="67%">Sub_total</td>
+                  <td width="54%">$
+                      <script>document.write(subtotal.toFixed(2));</script>
+                  </td>
+              </tr>
+      
+              <tr>
+                  <td style="text-align: center;" colspan="3" width="67%"><span style="font-family: arial;">Tax @
+                          <script>document.write(100 * tax_rate);</script>%
+                      </span></td>
+                  <td width="54%">$
+                      <script>document.write(tax.toFixed(2));</script>
+                  </td>
+              </tr>
+      
+              <tr>
+                  <td style="text-align: center;" colspan="3" width="67%">Shipping</td>
+                  <td width="54%">$
+                      <script>document.write(shipping.toFixed(2));</script>
+                  </td>
+              </tr>
+      
+              <tr>
+                  <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
+                  <td width="54%"><strong>$
+                          <script>document.write(total.toFixed(2));</script>
+                      </strong></td>
+              </tr>
+          </tbody>
+        </table>
+        <div>
+          <br><b>
+            OUR SHIPPING POLICY IS:A subtotal $0 - $300.99 will be $20 shipping
+            A subtotal $400 - $800.99 will be $25 shipping
+            Subtotals over $100 will be charged 5% of the subtotal amount
+          </b> </div>
+      </body>
+      
+    </html>
