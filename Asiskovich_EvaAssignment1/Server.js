@@ -6,7 +6,7 @@ var app = express();
 
 //Krizel Tomines and Daniel Port
 app.use(express.urlencoded({ extended: true })); //decode URL encoded data from POST requests
-app.get("/product.js", function (request, response, next) {
+app.get("/products.js", function (request, response, next) {
     response.type('.js');
     var products_str = `var products = ${JSON.stringify(products)};`;
     response.send(products_str);
