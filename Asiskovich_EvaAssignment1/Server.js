@@ -2,15 +2,15 @@
 //I start page by going to the server 
 var express = require('express'); //code for server
 var qs = require('querystring');
-var products = data.prods;
 var app = express();
 
 //Krizel Tomines and Daniel Port
 app.use(express.urlencoded({ extended: true })); //decode URL encoded data from POST requests
-app.get("/products_display", function (request, response){
-    var contents = fs.readFileSync('./view/products_display.html', 'utf8');
-    response.send(eval('`' + body + '`'));
-
+app.get("/product.js", function (request, response, next) {
+    response.type('.js');
+    var products_str = `var products = ${JSON.stringify(products)};`;
+    response.send(products_str);
+});
 //retreived from Nate Moylan
     //this function creates a for loop to generate the products for the page
     function display_products() {
@@ -28,7 +28,7 @@ app.get("/products_display", function (request, response){
             </section>`;
 
             // makes sure the quantity inputted by the user is validated. 
-            if (typeof req.query['purchase_submit'] != 'undefined') {
+            if (typeof req.query['purchase'] != 'undefined') {
         
                 for (i = 0; i < products.length; i++) {
                     if (params.has(`quantity${i}`)) {
@@ -50,7 +50,7 @@ app.get("/products_display", function (request, response){
         
         return str;
     }
-});
+
 // to validate that an input value = a non negative integer
 // inputstring is the input string; returnErrors indicates how the function returns
 // true = return the array, false = return a boolean.    
@@ -68,7 +68,7 @@ function isNonNegInt(inputstring, returnErrors = false) {
 // routing
 // to monitor all process requests    
 app.all('*', function (request, response, next) {
-    console.log(request.method + ' to ' + request.path);
+    console.log(request.method + ' to path: ' + request.path);
     next();
 });
 app.post('/process_invoice', function (request, response, next) {
@@ -77,7 +77,7 @@ app.post('/process_invoice', function (request, response, next) {
 var errors={};
 
 
-
+// route all other GET requests to files in public 
 
 //if the data is valid, send them to the invoice, otherwise send them back to products_display
 if(Object.keys(errors).length == 0) {
@@ -88,7 +88,7 @@ if(Object.keys(errors).length == 0) {
 });
 
 
-
+//start server
 // handles request for any static files
 app.use(express.static('./public'));
 app.listen(8080, () => console.log(`listening on port 8080`));
