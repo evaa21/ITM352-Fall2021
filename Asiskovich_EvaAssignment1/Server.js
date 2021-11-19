@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true })); //decode URL encoded data from 
 
 products.forEach( (prod,i) => {prod.total_sold = 0}); 
 
-app.get("./products.js", function (request, response, next) {
+app.get("/products.js", function (request, response, next) {
     response.type('.js');
     var products_str = `var products = ${JSON.stringify(products)};`;
     response.send(products_str);
