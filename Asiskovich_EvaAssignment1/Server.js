@@ -87,7 +87,7 @@ var errors={};
 if(Object.keys(errors).length == 0) {
     response.redirect('./invoice.html?'+ qs.stringify(request.body)); //move to invoice page if no errors
 }else{
-    response.redirect('./products_display?'+ qs.stringify(request.body));
+    response.redirect('/products_display?'+ qs.stringify(request.body));
 }
 });
 
