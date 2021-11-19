@@ -42,7 +42,7 @@ app.get("/products.js", function (request, response, next) {
                         total_qty += a_qty;
                         if (!isNonNegInt(a_qty)) {
                             has_errors = true; // if invalid quantity
-                            checkQuantityTextbox(product_selection_form[`quantity${i}`]); // shows where the error is
+                        // shows where the error is    checkQuantityTextbox(product_selection_form[`quantity${i}`]); // shows where the error is
                         }
                     }
                 }
@@ -69,13 +69,7 @@ function isNonNegInt(inputstring, returnErrors = false) {
     }
     return returnErrors ? errors : (errors.length == 0);
 }
-
-function checkQuantityTextbox(theTextbox) {
-    errors = isNonNegInt(theTextbox.value, true); // setting errors to isNonNegInt
-    if (errors.length == 0) errors = ['You want:']; 
-    if (theTextbox.value.trim() == '') errors = ['Please type quantity desired: ']; //Input outside the textbox
-    document.getElementById(theTextbox.name + '_label').innerHTML = errors.join('<font color="red">, </font>');
-}   
+ 
 // routing
 // to monitor all process requests    
 app.all('*', function (request, response, next) {
@@ -84,8 +78,22 @@ app.all('*', function (request, response, next) {
 });
 app.post('/process_invoice', function (request, response, next) {
 //to validate data
+let POST = request.body;
+    let name = products[0]['name'];
+    let name_price = products[0]['price'];
+
+    if (typeof POST['quantity_textbox'] != 'undefined') {
+    let quantity = POST['quantity_textbox'];
+    if (isNonNegativeInteger(quantity)) {
+        products[0]['total_sold'] += Number(quantity);
+        response.send(`<H2>Thank you for ordering ${quantity} ${name}! Your total is \$${quantity * brand_price}.</H2>`);
+    }else {
+        response.send(`<I>${quantity} is not a valid quantity!</I>`);
+    }
+}
 //error bag
 var errors={};
+
 
 
 // route all other GET requests to files in public 
