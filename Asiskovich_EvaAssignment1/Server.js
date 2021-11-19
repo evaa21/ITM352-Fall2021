@@ -69,6 +69,13 @@ function isNonNegInt(inputstring, returnErrors = false) {
     }
     return returnErrors ? errors : (errors.length == 0);
 }
+
+function checkQuantityTextbox(theTextbox) {
+    errors = isNonNegInt(theTextbox.value, true); // setting errors to isNonNegInt
+    if (errors.length == 0) errors = ['You want:']; 
+    if (theTextbox.value.trim() == '') errors = ['Please type quantity desired: ']; //Input outside the textbox
+    document.getElementById(theTextbox.name + '_label').innerHTML = errors.join('<font color="red">, </font>');
+}   
 // routing
 // to monitor all process requests    
 app.all('*', function (request, response, next) {
