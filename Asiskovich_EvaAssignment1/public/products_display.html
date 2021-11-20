@@ -3,7 +3,7 @@
 <script>
 //Adapted from Lab13 Ex4
 // to validate the entered quantity and process purchase request
-/*
+
 function checkQuantityTextbox(theTextbox) {
   console.log(" ",theTextbox.name);
     errors = isNonNegInt(theTextbox.value, true); //assigned erros to isNonNegInt function
@@ -11,7 +11,7 @@ function checkQuantityTextbox(theTextbox) {
     if (theTextbox.value.trim() == '') errors = ['Please type quantity desired: '];
     document.getElementById(theTextbox.name + '_label').innerHTML = errors.join('<font color="red">, </font>');
 }  
-*/    
+  
 // Validate that an input value is a non negative integer
     // inputstring is the input string; returnErrors indicates how the function returns
     // True means return the array. False is to return a boolean. 
@@ -58,7 +58,7 @@ function isNonNegInt(inputstring, returnErrors = false) {
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <style>
-body,h1,h2,h3{font-family: "Karma", sans-serif}
+body,h1,h2,h3,h4,h5{font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}
 </style>
  
@@ -104,8 +104,7 @@ body,h1,h2,h3{font-family: "Karma", sans-serif}
           <script>//Purchase button </script>
           <input type="submit" value="purchase" name="purchasebutton"> 
           <h2>Fine Jewlery Made Enviornmentally Concious</h2>
-             </form>
+    </form>
       </body>
       
       </html>
-      

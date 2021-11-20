@@ -26,7 +26,7 @@ app.get("/products.js", function (request, response, next) {
             <h2>${products[i].name}</h2> 
             <h3 label id ="quantity_available${i}"><i>Available: ${products[i].quantity_available} available!</i></h3></label>
             <h4>$${products[i].price.toFixed(2)}</h4>
-            <img src="./images/${products[i].image}" class="img">
+            <img src="/images/${products[i].image}" class="img">
             <label id ="quantity${i}_label">Number of Items: </label>
             <input type="text" placeholder="0" name="quantity${i}" onkeyup="checkQuantityTextbox(this);"> 
             </section>`;
@@ -38,9 +38,9 @@ app.get("/products.js", function (request, response, next) {
                     if (params.has(`quantity${i}`)) {
                         a_qty = params.get(`quantity${i}`);
                         // make textboxes sticky in case of invalid data
-                        product_selection_form[`quantity${i}`].value = a_qty;
+                        product_selection_form[`quantity${i}`].value = a_qty
                         total_qty += a_qty;
-                        if (!isNonNegInt(a_qty)) {
+                        if (!isNonNegativeInteger(a_qty)) {
                             has_errors = true; // if invalid quantity
                         // shows where the error is    checkQuantityTextbox(product_selection_form[`quantity${i}`]); // shows where the error is
                         }
@@ -55,25 +55,12 @@ app.get("/products.js", function (request, response, next) {
         return str;
     }
 
-// to validate that an input value = a non negative integer
-// inputstring is the input string; returnErrors indicates how the function returns
-// true = return the array, false = return a boolean.    
-function isNonNegInt(inputstring, returnErrors = false) {
-    errors = []; // assume no errors at first
-    if (Number(inputstring) != inputstring) {
-        errors.push('Not a number!'); // this is to check if string = a number value
-    }
-    else {
-        if (inputstring < 0) errors.push('Negative value!'); // to check if it is non-negative
-        if (parseInt(inputstring) != inputstring) errors.push('Not an integer!'); // to check that it's an integer
-    }
-    return returnErrors ? errors : (errors.length == 0);
-}
+
  
 // routing
 // to monitor all process requests    
 app.all('*', function (request, response, next) {
-    console.log(request.method + ' to path: ' + request.path);
+    console.log(request.method + ' to ' + request.path);
     next();
 });
 app.post('/process_invoice', function (request, response, next) {
@@ -86,10 +73,28 @@ let POST = request.body;
     let quantity = POST['quantity_textbox'];
     if (isNonNegativeInteger(quantity)) {
         products[0]['total_sold'] += Number(quantity);
-        response.send(`<H2>Thank you for ordering ${quantity} ${name}! Your total is \$${quantity * brand_price}.</H2>`);
+        response.send(`<H2>Thank you for ordering ${quantity} ${name}! Your total is \$${quantity * name_price}.</H2>`);
     }else {
         response.send(`<I>${quantity} is not a valid quantity!</I>`);
     }
+}
+
+// to validate that an input value = a non negative integer
+// inputstring is the input string; returnErrors indicates how the function returns
+// true = return the array, false = return a boolean.    
+function isNonNegInt(inputstring, returnErrors = false) {
+    errors = []; // assume no errors at first
+    if (Number(inputstring) != inputstring) {
+        errors.push('Not a number!'); // this is to check if string = a number value
+    }
+    else {
+        if (inputstring > 10) errors.push('<font color="red">Only 10 items in stock!</font>'); // Checks if qty is within the available products
+        if (inputstring == 0) errors.push('<font color="red">Enter a Number!</font>') // Checks if it is a Number
+        if(inputstring < 0) errors.push('<font color="red">Negative value!</font>'); // Check if it is non-negative
+        if(parseInt(inputstring) != inputstring) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
+
+    }
+    return returnErrors ? errors : (errors.length == 0);
 }
 //error bag
 var errors={};

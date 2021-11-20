@@ -9,13 +9,13 @@
         "name" : "Blue Sapphire Earrings",
        "price": 500.00,
        "image" : "bluesaphhire.jpg",
-       "quantity_available": 20
+       "quantity_available": 10
     },
     {
         "name" : "Tahitian Pearl Earings",
        "price" : 250.00,
        "image" : "tahitian.jpg",
-       "quantity_available": 30
+       "quantity_available": 10
     },
     {
         "name" : "Pink Stones Necklace",
@@ -27,6 +27,6 @@
         "name" : "Green Sapphire Earings",
        "price" : 450.00,
        "image" : "greenstone.jpg",
-       "quantity_available": 20
+       "quantity_available": 10
     }
 ]
