@@ -32,7 +32,7 @@ app.get("/products.js", function (request, response, next) {
             </section>`;
 
             // makes sure the quantity inputted by the user is validated. 
-            if (typeof req.query['purchase'] != 'undefined') {
+            if (typeof req.query['purchasebutton'] != 'undefined') {
         
                 for (i = 0; i < products.length; i++) {
                     if (params.has(`quantity${i}`)) {
@@ -42,7 +42,7 @@ app.get("/products.js", function (request, response, next) {
                         total_qty += a_qty;
                         if (!isNonNegativeInteger(a_qty)) {
                             has_errors = true; // if invalid quantity
-                        // shows where the error is    checkQuantityTextbox(product_selection_form[`quantity${i}`]); // shows where the error is
+                 checkQuantityTextbox(product_selection_form[`quantity${i}`]); // shows where the error is
                         }
                     }
                 }
@@ -92,6 +92,8 @@ function isNonNegInt(inputstring, returnErrors = false) {
         if (inputstring == 0) errors.push('<font color="red">Enter a Number!</font>') // Checks if it is a Number
         if(inputstring < 0) errors.push('<font color="red">Negative value!</font>'); // Check if it is non-negative
         if(parseInt(inputstring) != inputstring) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
+        
+        else if (q > products[i].quantity_available) errors.push('<font color="red">Over quantity available!</font>'); //Checks the available quantity
 
     }
     return returnErrors ? errors : (errors.length == 0);
