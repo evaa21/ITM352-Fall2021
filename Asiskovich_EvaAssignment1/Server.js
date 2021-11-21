@@ -72,7 +72,7 @@ let POST = request.body;
     if (typeof POST['quantity_textbox'] != 'undefined') {
     let quantity = POST['quantity_textbox'];
     if (isNonNegativeInteger(quantity)) {
-        products[0]['total_sold'] += Number(quantity);
+        products[0]['total_qty'] += Number(quantity);
         response.send(`<H2>Thank you for ordering ${quantity} ${name}! Your total is \$${quantity * name_price}.</H2>`);
     }else {
         response.send(`<I>${quantity} is not a valid quantity!</I>`);
