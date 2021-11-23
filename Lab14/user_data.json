@@ -13,5 +13,14 @@
         "name": "ITM 352",
         "password": "grader",
         "email": "itm352@hawaii.edu"
+    },
+    "newuser": {
+        "password": "newpass",
+        "email": "newuser@user.com"
+    },
+    "newgirl": {
+        "name": "newgirl",
+        "password": "12345",
+        "email": "newgirl@email.com"
     }
 }
