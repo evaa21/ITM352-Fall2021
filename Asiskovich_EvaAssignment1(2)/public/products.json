@@ -2,31 +2,31 @@
     {
         "brand" : "Pink Diamond Earrings",
        "price" : 950.00,
-       "image": "pinkdiamond1.jpg",
+       "image": "pinkdiamond1.jpeg",
        "quantity_available": 10
     },
     {
         "brand" : "Blue Sapphire Earrings",
        "price": 500.00,
-       "image" : "bluesaphhire1.jpg",
+       "image" : "bluesaphhire1.jpeg",
        "quantity_available": 10
     },
     {
         "brand" : "Tahitian Pearl Earings",
        "price" : 250.00,
-       "image" : "tahitian1.jpg",
+       "image" : "tahitian1.jpeg",
        "quantity_available": 10
     },
     {
         "brand" : "Pink Stones Necklace",
        "price" : 700.00,
-       "image" : "pinkstone1.jpg",
+       "image" : "pinkstone1.jpeg",
        "quantity_available": 10
     },
     {
         "brand" : "Green Sapphire Earings",
        "price" : 450.00,
-       "image" : "greenstone1.jpg",
+       "image" : "greenstone1.jpeg",
        "quantity_available": 10
     }
 ]
