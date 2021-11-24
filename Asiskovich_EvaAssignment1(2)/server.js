@@ -2,7 +2,7 @@
 var express = require('express');
 var myParser = require("body-parser");
 var fs = require('fs');
-var products = require("./products.json");
+var products = require("./public/products.json");
 
 var app = express();
 
@@ -64,9 +64,9 @@ app.post("/process_invoice", function (request, response, next) {
     }
 
 });
-//?
+
 app.get("/store", function (request, response) {
-    var contents = fs.readFileSync('./display_products.html', 'utf8');
+    var contents = fs.readFileSync('./public/products_display.html', 'utf8');
     response.send(eval('`' + contents + '`')); // render template string
 
     function display_products() {
@@ -87,6 +87,6 @@ app.get("/store", function (request, response) {
     }
 });
 
-app.use(express.static('./static'));
+app.use(express.static('./public'));
 
 var listener = app.listen(8080, () => { console.log('server started listening on port ' + listener.address().port) });
